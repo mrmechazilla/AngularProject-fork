@@ -1,0 +1,113 @@
+<img src="assets/images/cap.jpg" alt="i1" style="width: 180px; height: 90px;">
+<div class="app-body">
+    <main class="main d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="card mx-4">
+              <div class="card-body p-4">
+                <div *ngIf="currentStep === 1">
+                <form [formGroup]="form" (ngSubmit)="submit()">
+                  <h2 style="color: gray; font-size: 0.8em;">Step 1 of 2</h2> 
+                 <h2 style="margin-bottom: 20px">Create Account</h2>
+                  <div class="form-group">
+
+                    <!-- Role field --> 
+
+                    <div class="mb-3">
+                      <label for="role" class="form-label">Role</label>
+                      <select formControlName="role" class="form-control" id="type">
+                         <option value="Admin">Admin</option>
+                         <option value="Colab">Colab</option>
+                      </select>
+                      <div *ngIf="f['role'].touched && f['role'].invalid" class="alert alert-danger">
+                        <div *ngIf="f['role'].errors && f['role'].errors['required']">Role is required.</div>
+                      </div>
+                    </div>
+
+                    <!-- First Name field -->
+
+                    <div class="mb-3">
+                        <label for="firstname" class="form-label">First Name</label>
+                        <input type="text" formControlName="firstname" class="form-control" id="firstname" aria-describedby="emailHelp">
+                        <div *ngIf="f['firstname'].touched && f['firstname'].invalid" class="alert alert-danger">
+                          <div *ngIf="f['firstname'].errors && f['firstname'].errors['required']">First Name is required.</div>
+                        </div>
+                    </div>
+
+                    <!-- First Last field -->
+
+                    <div class="mb-3">
+                      <label for="lastname" class="form-label">Last Name</label>
+                      <input type="text" formControlName="lastname" class="form-control" id="lastname" aria-describedby="emailHelp">
+                      <div *ngIf="f['lastname'].touched && f['lastname'].invalid" class="alert alert-danger">
+                        <div *ngIf="f['lastname'].errors && f['lastname'].errors['required']">Last Name is required.</div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                 <div class="mt-5">
+                   <button (click)="currentStep = 2" type="submit" class="btn btn-block btn-primary" [disabled]="form.invalid"> Next </button>
+                 </div>
+                 
+                </form>
+              </div>
+
+
+              <div *ngIf="currentStep === 2">
+                <form [formGroup]="form1" (ngSubmit)="submit()">
+                  <h2 style="color: gray; font-size: 0.8em;">Step 2 of 2</h2> 
+                 <h2 style="margin-bottom: 20px">Create Account</h2>
+                  <div class="form-group">
+
+                    <!-- Email -->
+
+                    <div class="mb-3">
+                      <label for="email" class="form-label">Email</label>
+                      <input type="text" formControlName="email" class="form-control" id="email" aria-describedby="email" pattern=".*@capgemini\.com$" required>
+                      <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+                        <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</div>
+                        <div *ngIf="f['email'].errors && f['email'].errors['pattern']">Email should end with '@capgemini.com'.</div>
+                      </div>
+                   </div>
+
+                    <!-- Password -->
+
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Password</label>
+                      <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1">
+                      <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">
+                         <div *ngIf="f['password'].errors && f['password'].errors['required']">Password is required.</div>
+                      </div>
+                   </div>
+
+                    <!-- Confirm Password -->
+
+                    <div class="mb-3">
+                      <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
+                      <input type="password" formControlName="verifypassword" class="form-control" id="exampleInputPassword2">
+                      <div *ngIf="(f['verifypassword'].touched && f['verifypassword'].invalid) || f['verifypassword'].value != f['password'].value" class="alert alert-danger">
+                        <div >Password verification must be like the Password.</div>
+                      </div>
+                  </div>
+
+                  </div>
+                    
+                 <div class="mt-4">
+                   <button routerLink="/login" type="submit" class="btn btn-block btn-primary" [disabled]="!isForm1Valid"> Create Account </button>
+                 </div>
+                </form>
+              </div>
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  

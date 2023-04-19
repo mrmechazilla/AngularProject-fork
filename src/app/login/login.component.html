@@ -1,0 +1,55 @@
+<img src="assets/images/cap.jpg" alt="i1" style="width: 180px; height: 90px;">
+<div class="app-body">
+    <main class="main d-flex align-items-center h-100">
+      <div class="container">
+        <div class="row">
+          <div class="mx-auto">
+            <div class="card-group">
+              <div class="card p-4">
+                <div class="card-body">
+                  <form [formGroup]="form" (ngSubmit)="submit()">
+                    <!-- <h3 style="color: gray; font-size: 0.8em;">Step 1 of 2</h3> -->
+                    <h2> Sign In </h2>
+                    <!-- <p class="text-muted">please Sign In to your account</p> -->
+                    <div class="input-group mb-3">
+                        <div class="mb-3" style="margin-top: 5%; width: 13cm;">
+                            <label for="email"  class="form-label" style="color: #555555;"> Email address</label>
+                            <input type="email" formControlName="email" class="form-control" id="email" aria-describedby="email" pattern=".*@capgemini\.com$" required>
+                            <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+                                <div *ngIf="f['email'].errors && f['email'].errors['required']">email is required.</div>
+                                <div *ngIf="f['email'].errors && f['email'].errors['pattern']">email should end with '@capgemini.com'.</div>
+                          </div>
+                    
+                        <div class="mb-3" style="padding-top: 10px;">
+                        <label for="password" class="form-label" style="color: #555555;">Password</label>
+                        <input type="password" formControlName="password" class="form-control" id="password">
+                        <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">
+                        <div *ngIf="f['password'].errors && f['password'].errors['required']">password is required.</div>
+                        </div>
+                       </div>
+                      <div class="d-flex justify-content-center">
+                        <button class="btn btn-primary w-100" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" [disabled]="form.invalid">Sign In</button>
+                      </div>
+                      <div class="d-flex align-items-center justify-content-center mb-4 mt-4">
+                        <hr class="flex-grow-1">
+                        <span class="mx-2" style="color: #555555;">Or</span>
+                        <hr class="flex-grow-1">
+                        
+                      </div>                      
+                      <div class="d-flex justify-content-center">
+                        <button routerLink="/register" class="btn btn-primary w-100" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" >Create Account</button>
+                      </div>
+                    </div>
+                    </div>
+                  </form>
+                </div>
+              </div>  
+            </div>
+          </div>
+        </div>
+        <p>{{this.errorAuth}}</p>
+      </div>
+    </main>
+      
+  </div>
+  
