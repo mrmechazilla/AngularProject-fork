@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class NavbarComponent {
   menuItems = [
     { label: 'Home', route: '/home' },
-    { label: 'About', route: '/about' },
-    { label: 'Contact', route: '/contact' }
+    { label: 'ajouter une absence maladie', route: '/about' },
+    { label: 'consulter mes absences maladie', route: '/contact' }
   ];
 
 }
